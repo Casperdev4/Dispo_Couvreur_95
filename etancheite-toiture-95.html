@@ -410,40 +410,7 @@
             });
         });
     </script>
-    <script>
-async function submitToWebPrime(e) {
-    e.preventDefault();
-    var form = document.getElementById('contactForm');
-    var btn = form.querySelector('button[type="submit"]');
-    var originalText = btn.textContent;
-
-    if (form._gotcha && form._gotcha.value) return false;
-
-    btn.textContent = 'Envoi en cours...';
-    btn.disabled = true;
-
-    try {
-        var formData = new FormData(form);
-        var response = await fetch('https://webprime.app/webhook/contact/930ce709a49b4c927f6c05614f0c6e254ba4dda9c40d1f0392b5036d5f5796a6', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (response.ok) {
-            window.location.href = 'https://iso-couvreur-95.fr/';
-        } else {
-            alert('Erreur lors de l\'envoi. Veuillez reessayer.');
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
-    } catch (error) {
-        alert('Erreur de connexion. Veuillez reessayer.');
-        btn.textContent = originalText;
-        btn.disabled = false;
-    }
-    return false;
-}
-</script>
+    
 </body>
 
 </html>
